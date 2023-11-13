@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -25,6 +28,11 @@ public class User {
 
     @Column(name = "user_total_point")
     Long totalPoint;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserChallenge> userChallenges = new ArrayList<>();
+
+
 
     @Builder
     public User(Long id, String name, String img, Long totalPoint) {
