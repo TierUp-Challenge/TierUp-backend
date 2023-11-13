@@ -9,5 +9,4 @@ public class TierupApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TierupApplication.class, args);
 	}
-
 }
