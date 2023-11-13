@@ -31,12 +31,9 @@ public class ChallengeService {
 
     public ChallengeDto findChallengeById(Long id) {
         Optional<Challenge> challengeOptional = repository.findById(id);
-        if (challengeOptional.isEmpty()) {
-            // 오류 처리
-            throw new RuntimeException("Challenge not found with id: " + id);
-        }
 
-        Challenge challenge = challengeOptional.get();
+        Challenge challenge = challengeOptional.orElseThrow(()
+                -> new RuntimeException("Challenge not found with id: " + id));
 
         ChallengeDto challengeDto = ChallengeDto.builder()
                 .name(challenge.getName())
