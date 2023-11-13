@@ -28,6 +28,9 @@ public class ChallengeController {
         return problemService.findByChallengeId(id);
     }
 
-//    @GetMapping("/challenges/{id}")
+    @GetMapping("/challenges/{id}")
+    ChallengeDto challengeInfo(@PathVariable("id") Long id) {
+        return challengeService.findChallengeById(id);
+    }
 
 }
