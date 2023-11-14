@@ -55,13 +55,8 @@ public class ChallengeService {
     }
 
     public List<UserRankingDto> findUserRankingById(Long challengeId) {
-        Optional<Challenge> optionalChallenge = challengeRepository.findById(challengeId);
-
-        if (optionalChallenge.isEmpty()) {
-            throw new RuntimeException("Challenge not found with id: " + challengeId);
-        }
-
-        Challenge challenge = optionalChallenge.get();
+        Challenge challenge = challengeRepository.findById(challengeId)
+                .orElseThrow(() -> new RuntimeException("Challenge not found with id: " + challengeId));
         List<UserChallenge> userChallenges = challenge.getUserChallenges();
 
         userChallenges.sort(Comparator
