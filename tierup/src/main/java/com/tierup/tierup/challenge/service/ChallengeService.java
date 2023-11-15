@@ -34,7 +34,7 @@ public class ChallengeService {
     }
 
     public ChallengeDto findChallengeById(Long id) {
-        Optional<Challenge> challengeOptional = repository.findById(id);
+        Optional<Challenge> challengeOptional = challengeRepository.findById(id);
 
         Challenge challenge = challengeOptional.orElseThrow(()
                 -> new RuntimeException("Challenge not found with id: " + id));

@@ -3,6 +3,7 @@ package com.tierup.tierup.user.entity;
 import com.tierup.tierup.auth.dto.UserInfoResponse;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,7 +22,7 @@ public class User {
     private Long id;
 
     @Column(nullable = false, name = "user_name")
-    String username;
+    String name;
 
     @Column(name = "user_img")
     String img;
@@ -30,9 +31,10 @@ public class User {
     Long totalPoint;
 
     public User(UserInfoResponse userInfo) {
-        this.username = userInfo.getUsername();
+        this.name = userInfo.getUsername();
         this.img = userInfo.getImgUrl();
         this.totalPoint = 0L;
+    }
 
     @OneToMany(mappedBy = "user")
     private List<UserChallenge> userChallenges = new ArrayList<>();
@@ -44,4 +46,5 @@ public class User {
         this.img = img;
         this.totalPoint = totalPoint;
     }
+
 }
