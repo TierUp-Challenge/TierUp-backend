@@ -1,34 +1,38 @@
 package com.tierup.tierup.challenge.entity;
 
-import com.tierup.tierup.user.entity.UserChallenge;
+import com.tierup.tierup.season.entity.Season;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Challenge {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "challenge_id")
+    long id;
 
     @Column(name = "challenge_name")
-    private String name;
-    @Column(name = "challenge_img")
-    private String img;
-    @Column(name = "challenge_begin_date")
-    private String beginDate;
-    @Column(name = "challenge_end_date")
-    private String endDate;
-    @Column(name = "challenge_point")
-    private Long point;
-    @Column(name = "challenge_state")
-    private String state;
+    String name;
+
+    @Column(name = "challenge_description")
+    String description;
+
+    @Column(name = "challenge_input_description")
+    String input_description;
+
+    @Column(name = "challenge_output_description")
+    String output_description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "season_id")
+    Season season;
+
     @OneToMany(mappedBy = "challenge")
-    private List<UserChallenge> userChallenges = new ArrayList<>();
+    List<Testcase> testcases;
 }
