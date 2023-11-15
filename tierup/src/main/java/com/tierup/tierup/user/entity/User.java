@@ -6,6 +6,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -30,5 +33,15 @@ public class User {
         this.username = userInfo.getUsername();
         this.img = userInfo.getImgUrl();
         this.totalPoint = 0L;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserChallenge> userChallenges = new ArrayList<>();
+
+    @Builder
+    public User(Long id, String name, String img, Long totalPoint) {
+        this.id = id;
+        this.name = name;
+        this.img = img;
+        this.totalPoint = totalPoint;
     }
 }

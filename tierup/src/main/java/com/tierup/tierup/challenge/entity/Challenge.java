@@ -1,9 +1,13 @@
 package com.tierup.tierup.challenge.entity;
 
+import com.tierup.tierup.user.entity.UserChallenge;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,5 +29,6 @@ public class Challenge {
     private Long point;
     @Column(name = "challenge_state")
     private String state;
-
+    @OneToMany(mappedBy = "challenge")
+    private List<UserChallenge> userChallenges = new ArrayList<>();
 }

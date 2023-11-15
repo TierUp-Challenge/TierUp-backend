@@ -4,6 +4,7 @@ import com.tierup.tierup.challenge.dto.ChallengeDto;
 import com.tierup.tierup.challenge.service.ChallengeService;
 import com.tierup.tierup.problem.dto.ProblemResponse;
 import com.tierup.tierup.problem.service.ProblemService;
+import com.tierup.tierup.user.dto.UserRankingDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,13 @@ public class ChallengeController {
         return problemService.findByChallengeId(id);
     }
 
-//    @GetMapping("/challenges/{id}")
+    @GetMapping("/challenges/{id}")
+    ChallengeDto challengeInfo(@PathVariable("id") Long id) {
+        return challengeService.findChallengeById(id);
+    }
 
+    @GetMapping("challenges/{id}/ranking")
+    List<UserRankingDto> challengesRanking(@PathVariable("id") Long id) {
+        return challengeService.findUserRankingById(id);
+    }
 }
