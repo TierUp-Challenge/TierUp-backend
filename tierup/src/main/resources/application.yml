@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+oauth2:
+  user:
+    github:
+      client-id: ${GITHUB_CLIENT_ID}
+      client-secret: ${GITHUB_CLIENT_SECRET}
+      login-url: ${GITHUB_LOGIN_URL}
+      redirect-url: ${GITHUB_REDIRECT_URL}
+      token-url: ${GITHUB_TOKEN_URL}
+      user-url: ${GITHUB_USER_URL}
