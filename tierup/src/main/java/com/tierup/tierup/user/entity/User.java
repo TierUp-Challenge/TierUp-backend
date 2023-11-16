@@ -37,7 +37,7 @@ public class User {
     }
 
     @OneToMany(mappedBy = "user")
-    private List<UserChallenge> userChallenges = new ArrayList<>();
+    private List<UserSeason> userSeasons = new ArrayList<>();
 
     @Builder
     public User(Long id, String name, String img, Long totalPoint) {
