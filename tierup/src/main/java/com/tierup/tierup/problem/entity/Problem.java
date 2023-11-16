@@ -1,6 +1,6 @@
 package com.tierup.tierup.problem.entity;
 
-import com.tierup.tierup.challenge.entity.Challenge;
+import com.tierup.tierup.season.entity.Season;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +29,7 @@ public class Problem {
     String output_description;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    Challenge challenge;
+    Season season;
 
     @OneToMany(mappedBy = "problem")
     List<Testcase> testcases;
